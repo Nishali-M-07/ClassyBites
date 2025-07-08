@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eden Garden Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hidden-item {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900">
+    <header class="bg-[#03363D] text-white p-4 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <img src="logo.png" alt="Logo" class="w-10 h-10 rounded-full">
+            <h1 class="text-2xl font-bold">CLASSY BITES</h1>
+        </div>
+        <nav class="space-x-4">
+            <button class="bg-[#BDD9D7] text-[#03363D] px-4 py-1 rounded">Cafes</button>
+            <button class="bg-[#BDD9D7] text-[#03363D] px-4 py-1 rounded">Combo Offers</button>
+            <button class="bg-[#BDD9D7] text-[#03363D] px-4 py-1 rounded">Sign In</button>
+            <button class="bg-[#BDD9D7] text-[#03363D] px-4 py-1 rounded">Login</button>
+        </nav>
+        <a href="cart.html" class="bg-[#BDD9D7] text-[#03363D] px-4 py-1 rounded relative">
+            🛒 Cart
+            <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center">0</span>
+          </a>
+          
+    </header>
+
+    <main class="p-6">
+        <input type="text" id="searchInput" placeholder="Search Eden Garden Foods..." class="w-full border border-[#BDD9D7] p-2 rounded-full mb-6" oninput="filterItems()">
+
+        <h2 class="text-3xl font-bold mb-4">EDEN-GARDEN</h2>
+
+        <div class="mb-6 space-x-2">
+            <button onclick="filterCategory('breakfast')" class="bg-[#03363D] text-white px-4 py-2 rounded-full">Breakfast</button>
+            <button onclick="filterCategory('lunch')" class="bg-[#BDD9D7] text-[#03363D] px-4 py-2 rounded-full">Lunch</button>
+            <button onclick="filterCategory('snacks')" class="bg-[#BDD9D7] text-[#03363D] px-4 py-2 rounded-full">Snacks</button>
+            <button onclick="filterCategory('drinks')" class="bg-[#BDD9D7] text-[#03363D] px-4 py-2 rounded-full">Drinks</button>
+        </div>
+
+        <div id="menuContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Breakfast Items -->
+            <div class="menu-item breakfast bg-[#E6F2F1] p-4 rounded-2xl shadow-md" data-name="idli">
+                <img src="menu-images/breakfast/Idli.jpg" alt="Idli" class="w-full h-40 object-cover rounded">
+                <h3 class="font-bold text-lg mt-2">Idli</h3>
+                <p>2 pieces</p>
+                <p class="text-red-600 font-bold">₹20</p>
+                <button onclick='addToCart("Idli", 20, "menu-images/breakfast/Idli.jpg")' class="bg-[#03363D] text-white px-4 py-1 rounded mt-2">Add</button>
+
+            </div>
+
+            <div class="menu-item breakfast  bg-[#E6F2F1] p-4 rounded-2xl shadow-md" data-name="dosa">
+                <img src="menu-images/breakfast/Dosai.jpg" alt="Dosa" class="w-full h-40 object-cover rounded">
+                <h3 class="font-bold text-lg mt-2">Dosa</h3>
+                <p>1 piece</p>
+                <p class="text-red-600 font-bold">₹25</p>
+                <button onclick="addToCart('Dosa', 25, 'menu-images/breakfast/Dosai.jpg')" class="bg-[#03363D] text-white px-4 py-1 rounded mt-2">Add</button>
+            </div>
+
+            <div class="menu-item breakfast  bg-[#E6F2F1] p-4 rounded-2xl shadow-md" data-name="pongal">
+                <img src="menu-images/breakfast/Pongal.jpg" alt="Pongal" class="w-full h-40 object-cover rounded">
+                <h3 class="font-bold text-lg mt-2">Pongal</h3>
+                <p>150 gm</p>
+                <p class="text-red-600 font-bold">₹25</p>
+                <button onclick="addToCart('Pongal', 25, 'menu-images/breakfast/Pongal.jpg')" class="bg-[#03363D] text-white px-4 py-1 rounded mt-2">Add</button>
+            </div>
+
+            <div class="menu-item breakfast  bg-[#E6F2F1] p-4 rounded-2xl shadow-md" data-name="poori">
+                <img src="menu-images/breakfast/Poori.jpg" alt="Poori" class="w-full h-40 object-cover rounded">
+                <h3 class="font-bold text-lg mt-2">Poori</h3>
+                <p>2 pieces</p>
+                <p class="text-red-600 font-bold">₹30</p>
+                <button onclick="addToCart('Poori', 25, 'menu-images/breakfast/Poori.jpg')" class="bg-[#03363D] text-white px-4 py-1 rounded mt-2">Add</button>
+            </div>
+
+            <div class="menu-item breakfast  bg-[#E6F2F1] p-4 rounded-2xl shadow-md" data-name="chapathi">
+                <img src="menu-images/breakfast/Chapathi.jpg" alt="Chapathi" class="w-full h-40 object-cover rounded">
+                <h3 class="font-bold text-lg mt-2">Chapathi</h3>
+                <p>2 pieces</p>
+                <p class="text-red-600 font-bold">₹30</p>
+                <button onclick="addToCart('Chapathi', 25, 'menu-images/breakfast/Chapathi.jpg')" class="bg-[#03363D] text-white px-4 py-1 rounded mt-2">Add</button>
+            </div>
+
+            <!-- Lunch Items -->
+            <div class="menu-item lunch  bg-[#E6F2F1] p-4 rounded-2xl shadow-md" data-name="sambar rice">
+                <img src="menu-images/Lunch/Sambar Rice.jpg" alt="Sambar Rice" class="w-full h-40 object-cover rounded">
+                <h3 class="font-bold text-lg mt-2">Sambar Rice</h3>
+                <p>Full Plate</p>
+                <p class="text-red-600 font-bold">₹50</p>
+                <button onclick="addToCart('Sambar Rice', 25, 'menu-images/Lunch/Sambar Rice.jpg')" class="bg-[#03363D] text-white px-4 py-1 rounded mt-2">Add</button>
+
+            </div>
+
+            <div class="menu-item lunch  bg-[#E6F2F1] p-4 rounded-2xl shadow-md" data-name="lemon rice">
+                <img src="menu-images/Lunch/Lemon Rice.jpg" alt="Lemon Rice" class="w-full h-40 object-cover rounded">
+                <h3 class="font-bold text-lg mt-2">Lemon Rice</h3>
+                <p>Full Plate</p>
+                <p class="text-red-600 font-bold">₹40</p>
+                <button class="bg-[#03363D] text-white px-4 py-1 rounded mt-2">Add</button>
+            </div>
+
+            <div class="menu-item lunch  bg-[#E6F2F1] p-4 rounded-2xl shadow-md" data-name="tomato rice">
+                <img src="menu-images/Lunch/Tomato Rice.jpg"alt="Tomato Rice" class="w-full h-40 object-cover rounded">
+                <h3 class="font-bold text-lg mt-2">Tomato Rice</h3>
+                <p>Full Plate</p>
+                <p class="text-red-600 font-bold">₹40</p>
+                <button onclick="addToCart('Tomato Rice', 25, 'menu-images/Lunch/Tomato Rice.jpg')" class="bg-[#03363D] text-white px-4 py-1 rounded mt-2">Add</button>
+                
+            </div>
+
+            <div class="menu-item lunch  bg-[#E6F2F1] p-4 rounded-2xl shadow-md" data-name="mini meals">
+                <img src="menu-images/Lunch/Mini Meals.jpg" alt="Mini Meals" class="w-full h-40 object-cover rounded">
+                <h3 class="font-bold text-lg mt-2">Mini Meals</h3>
+                <p>Half Plate</p>
+                <p class="text-red-600 font-bold">₹45</p>
+                <button onclick="addToCart('Mini Meals', 25, 'menu-images/Lunch/Mini Meals.jpg')" class="bg-[#03363D] text-white px-4 py-1 rounded mt-2">Add</button>
+            </div>
+
+            <!-- Snacks Items -->
+            <div class="menu-item snacks  bg-[#E6F2F1] p-4 rounded-2xl shadow-md" data-name="potato chips">
+                <img src="menu-images/snacks/Potato Chips.jpg" alt="Potato Chips" class="w-full h-40 object-cover rounded">
+                <h3 class="font-bold text-lg mt-2">Potato Chips</h3>
+                <p>100 gm</p>
+                <p class="text-red-600 font-bold">₹20</p>
+                <button onclick="addToCart('Potato Chips', 25, 'menu-images/snacks/Potato Chips.jpg')" class="bg-[#03363D] text-white px-4 py-1 rounded mt-2">Add</button>
+            </div>
+
+            <div class="menu-item snacks  bg-[#E6F2F1] p-4 rounded-2xl shadow-md" data-name="lotte choco pie">
+                <img src="menu-images/snacks/Lotte Choco Pie.jpg"alt="Lotte Choco Pie" class="w-full h-40 object-cover rounded">
+                <h3 class="font-bold text-lg mt-2">Lotte Choco Pie</h3>
+                <p>1 pack</p>
+                <p class="text-red-600 font-bold">₹10</p>
+                <button onclick="addToCart('Lotte Choco Pie', 25, 'menu-images/snacks/Lotte Choco Pie.jpg')" class="bg-[#03363D] text-white px-4 py-1 rounded mt-2">Add</button>
+            </div>
+
+            <div class="menu-item snacks  bg-[#E6F2F1] p-4 rounded-2xl shadow-md" data-name="diary milk">
+                <img src="menu-images/snacks/Diary Milk.jpg" alt="Diary Milk" class="w-full h-40 object-cover rounded">
+                <h3 class="font-bold text-lg mt-2">Diary Milk</h3>
+                <p>1 bar</p>
+                <p class="text-red-600 font-bold">₹20</p>
+                <button onclick="addToCart('Diary Milk', 25, 'menu-images/snacks/Diary Milk.jpg')" class="bg-[#03363D] text-white px-4 py-1 rounded mt-2">Add</button>
+
+            </div>
+
+            <!-- Drinks -->
+            <div class="menu-item drinks  bg-[#E6F2F1] p-4 rounded-2xl shadow-md" data-name="tea">
+                <img src="menu-images/drinks/tea.jpg" alt="Tea" class="w-full h-40 object-cover rounded">
+                <h3 class="font-bold text-lg mt-2">Tea</h3>
+                <p>100 ml</p>
+                <p class="text-red-600 font-bold">₹10</p>
+                <button onclick="addToCart('Tea', 25, 'menu-images/drinks/tea.jpg')" class="bg-[#03363D] text-white px-4 py-1 rounded mt-2">Add</button>
+
+            </div>
+            <div class="menu-item drinks  bg-[#E6F2F1] p-4 rounded-2xl shadow-md" data-name="tea">
+                <img src="menu-images/drinks/coffe.jpg" alt="Tea" class="w-full h-40 object-cover rounded">
+                <h3 class="font-bold text-lg mt-2">Coffee</h3>
+                <p>100 ml</p>
+                <p class="text-red-600 font-bold">₹10</p>
+                <button class="bg-[#03363D] text-white px-4 py-1 rounded mt-2">Add</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function filterCategory(category) {
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                if (item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function filterItems() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                const name = item.getAttribute('data-name');
+                if (name.toLowerCase().includes(input)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Show all items by default
+        filterCategory('breakfast');
+    </script>
+    <script>
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+        function addToCart(name, price, image) {
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.name === name);
+            
+            if(existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            
+            // Update localStorage and UI
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+    
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = totalItems;
+        }
+    
+        // Initialize cart count on page load
+        updateCartCount();
+    </script>
+</body>
+
+</html>

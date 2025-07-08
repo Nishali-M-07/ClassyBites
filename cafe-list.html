@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classy Bites - Cafes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #03363D;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-img {
+            margin-right: 15px;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .nav-links a {
+            color: #03363D;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 700;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background-color: #BDD9D7;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #9fc3c0;
+        }
+
+        /* Cafe List Section */
+        .cafe-container {
+            margin-top: 150px;
+            padding: 30px;
+        }
+
+        .cafe-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            max-width: 800px;
+        }
+
+        .cafe-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid #BDD9D7;
+        }
+
+        .cafe-name {
+            color: #03363D;
+            font-size: 1.4rem;
+            flex-grow: 1;
+            font-weight: 700;
+        }
+
+        .view-btn {
+            background: #03363D;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .view-btn:hover {
+            transform: scale(1.05);
+            background-color: #02282d;
+        }
+</style>
+    body {
+        background: url('clg-bg.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+</style>
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <img src="logo.png" class="logo-img" alt="Classy Bites Logo" width="65" height="65">
+        <div class="logo">CLASSY BITES</div>
+        <div class="nav-links">
+            <a href="#">Cafes</a>
+            <a href="#">Combo Offers</a>
+            <a href="#">Logout</a>
+            <a href="#">Profile</a>
+        </div>
+    </nav>
+
+    <!-- Cafe Container -->
+    <div class="cafe-container ">
+        <!-- Eden Garden -->
+        <div class="cafe-card">
+            <img src="eden-garden-logo.png" class="cafe-logo" alt="Eden Garden">
+            <div class="cafe-name">Eden Garden</div>
+            <a href="eden-garden-menu.html">
+                <button class="view-btn">View Menu</button>
+            </a>
+        </div>
+
+        <!-- Coffee Point -->
+        <div class="cafe-card">
+            <img src="coffee-point-logo.png" class="cafe-logo" alt="Coffee Point">
+            <div class="cafe-name">Coffee Point</div>
+            <a href="#">
+                <button class="view-btn">View Menu</button>
+            </a>
+        </div>
+
+        <!-- Subrapa -->
+        <div class="cafe-card">
+            <img src="subrapa-logo.png" class="cafe-logo" alt="Subrapa">
+            <div class="cafe-name">Subrapa</div>
+            <a href="#">
+                <button class="view-btn">View Menu</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

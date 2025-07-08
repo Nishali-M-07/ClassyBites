@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cart - Classy Bites</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#E6F2F1] min-h-screen p-6">
+  <h1 class="text-3xl font-bold text-[#03363D] mb-4">Your Cart</h1>
+  <div id="cart-items" class="space-y-4"></div>
+  <h2 id="total" class="text-xl font-bold mt-6 text-[#03363D]"></h2>
+  <button onclick="checkout()" class="mt-6 bg-[#03363D] text-white px-6 py-2 rounded-full">Proceed to Pay</button>
+  
+    <script>
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const container = document.getElementById("cart-items");
+      let total = 0;
+  
+      function renderCart() {
+        container.innerHTML = "";
+        total = 0;
+  
+        if (cart.length === 0) {
+          container.innerHTML = "<p class='text-gray-700'>Your cart is empty 😢</p>";
+        } else {
+          cart.forEach((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+  
+            container.innerHTML += `
+              <div class="flex items-center bg-white p-4 rounded-xl shadow-md">
+                <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded-lg mr-4">
+                <div class="flex-grow">
+                  <h3 class="text-lg font-bold">${item.name}</h3>
+                  <p>₹${item.price} × ${item.quantity}</p>
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                  <p class="font-bold text-red-600">₹${itemTotal}</p>
+                  <button onclick="removeItem(${index})" class="text-red-500 text-sm hover:text-red-700">
+                    Remove
+                  </button>
+                </div>
+              </div>
+            `;
+          });
+        }
+        document.getElementById("total").textContent = `Total: ₹${total}`;
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+  
+      function removeItem(index) {
+        cart.splice(index, 1);
+        renderCart();
+      }
+  
+      function checkout() {
+        alert("Proceeding to payment...");
+        // localStorage.removeItem("cart"); // Uncomment to clear cart after payment
+      }
+  
+      // Initial render
+      renderCart();
+    </script>
+</body>
+</html>
